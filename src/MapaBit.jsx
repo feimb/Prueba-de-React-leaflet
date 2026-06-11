@@ -11,7 +11,7 @@ import {
     GeoJSON,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import sudamerica from "./brazil-states.geojson"
+
 const ANTENAS = [
     {
         cluster: "CBD_BEIRAMAR",
@@ -53,7 +53,7 @@ export default function MapaBit() {
             style={{ width: "100%", height: "100vh" }}
         >
             <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                url="https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}"
                 attribution="&copy; CARTO"
             />
 
@@ -74,7 +74,15 @@ export default function MapaBit() {
             <Circle center={[-27.594, -48.5209]} radius={1000} />
 
             {/* Línea */}
-            <GeoJSON data={sudamerica} />
+{/* 
+            <GeoJSON
+                data={estados}
+                style={{
+                    color: "red",
+                    weight: 3,
+                    fillOpacity: 0.1,
+                }}
+            /> */}
             {/* Polígono */}
             <Polygon
                 positions={[
@@ -86,3 +94,5 @@ export default function MapaBit() {
         </MapContainer>
     );
 }
+
+
